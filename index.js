@@ -8,7 +8,7 @@ const myInterval = setInterval(rightNowDiag, 1000);
 
 function rightNowDiag() {
     var dateSelected = new Date();
-    return rightnow = dateSelected.getHours() + ":" + dateSelected.getMinutes();
+    return rightnow = dateSelected.getHours() + ":" + dateSelected.getMinutes() + ":" + dateSelected.getSeconds();
 }
 
 function logMySession() {
@@ -23,10 +23,23 @@ function logMySession() {
 }
 
 pmdr_check.addEventListener('click', function() {
+    const input_create = document.createElement("input");
+    const label_25_create = document.createElement("label");
     if (pmdr_check.checked === true) {
+        //log for diagnostics the time selected
+        console.log("Pomodoro Selected at", rightNowDiag());
+        //hide the label and checkbox for the Break option
         break_check.style.display = "none";
         break_label.style.display = "none";
-        console.log("Pomodoro Selected at", rightNowDiag());
+        //set label for the input created
+        label_25_create.htmlFor = "choose";
+        label_25_create.appendChild(document.createTextNode("25min"))
+        //set attributes for the input created
+        input_create.setAttribute("type","checkbox");
+        input_create.id = "choose";
+        input_create.defaultValue = "25";
+        document.body.appendChild(label_25_create);
+        document.body.appendChild(input_create);
     } else {
         break_check.style.display = "initial";
         break_label.style.display = "initial";
