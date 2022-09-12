@@ -10,12 +10,20 @@ h1{
     margin: auto auto;
 }
 
-.myform{
+#myform{
     margin: auto auto;
     padding: 20px 20px;
     width: 800px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+#flexy{
+    margin: auto auto;
+    padding: 10px 0px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
 }
 
 input[type=checkbox]{

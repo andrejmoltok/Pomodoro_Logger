@@ -12,14 +12,18 @@
         <div class="wrapper">
             <h1><img src="tomato.png">  Pomodoro Logger  <img src="tomato.png"></h1>
 
-            <div class="myform">
-                <label for="pmdr" id="pmdr_label">Pomodoro:
-                    <input type="checkbox" id="pmdr_check">
-                </label>
-                <label for="break" id="break_label">Break:
-                    <input type="checkbox" id="break_check">
-                </label>
-                <button onclick="logMySession()">Log my session</button>
+            <div id="flexy">
+                <div id="myform">
+                    <label for="pmdr" id="pmdr_label">Pomodoro:
+                        <input type="checkbox" id="pmdr_check">
+                    </label>
+                    <label for="break" id="break_label">Break:
+                        <input type="checkbox" id="break_check">
+                    </label>
+                </div>
+                <div>
+                    <button onclick="logMySession()">Log my session</button>
+                </div>
             </div>
 
             <div>
