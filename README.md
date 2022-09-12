@@ -1,4 +1,4 @@
-# Pomodoro_Recorder
+# Pomodoro Recorder
 
 **Pomodoro Recorder Sheet**
 
