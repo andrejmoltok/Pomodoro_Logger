@@ -1,2 +1,4 @@
 # Pomodoro_Recorder
-Pomodoro Recorder Sheet
+---------------------------
+| Pomodoro Recorder Sheet |
+---------------------------
