@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Pomodoro Logging Page</title>
+        <meta name="description" content="Pomodoro Logging Page">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1><img src="tomato.png">  Pomodoro Logger  <img src="tomato.png"></h1>
+
+            <div class="myform">
+                <label for="start-time">Start time:
+                    <input type="text" value="HH:MM" id="start-time">
+                </label>
+                <label for="pmdr" id="pmdr_label">Pomodoro:
+                    <input type="checkbox" id="pmdr_check">
+                </label>
+                <label for="break" id="break_label">Break:
+                    <input type="checkbox" id="break_check">
+                </label>
+                <button onclick="logMySession()">Log my session</button>
+            </div>
+
+            <div>
+            <table id="pmdr">
+                <tr>
+                    <th>Start time</th>
+                    <th>Pomodoro/Break</th>
+                    <th>End time</th>
+                </tr>
+            </table>
+            </div>
+
+            <div id="foot">
+                <footer><a href="https://www.flaticon.com/free-icons/tomato" title="tomato icons">Tomato icons created by Pixel perfect - Flaticon</a></footer>
+            </div>
+
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

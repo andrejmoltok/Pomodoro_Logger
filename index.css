@@ -1,0 +1,39 @@
+.wrapper{
+    margin: auto auto;
+    width: 960px;
+    height: 200px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+h1{
+    margin: auto auto;
+}
+
+.myform{
+    margin: auto auto;
+    padding: 20px 20px;
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type=checkbox]{
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+    display: inline-block;
+}
+
+table{
+    margin: auto 0;
+    width: 100%;
+    background-color: burlywood;
+    text-align: center;
+}
+
+#foot{
+    margin: auto auto;
+    padding: 0 0;
+    min-width: 350px;
+}
