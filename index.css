@@ -22,7 +22,6 @@ input[type=checkbox]{
     vertical-align: middle;
     position: relative;
     bottom: 1px;
-    display: inline-block;
 }
 
 table{
