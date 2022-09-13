@@ -6,8 +6,8 @@ const break_check = document.getElementById("break_check");
 const pmdr_label = document.getElementById("pmdr_label");
 const break_label = document.getElementById("break_label");
 
-//checkbox child selection
-const btn = document.getElementById("myform").children[2];
+//start_time field value
+const start_time = document.getElementsById("start_time");
 
 //setInterval to refresh new Date() every 1 second
 const myInterval = setInterval(rightNowDiag, 1000);
@@ -17,13 +17,12 @@ function rightNowDiag() {
     var dateSelected = new Date();
     var minuteFormat = dateSelected.getMinutes().toString().length === 1 ? '0' + dateSelected.getMinutes().toString() : dateSelected.getMinutes();
     var secondFormat = dateSelected.getSeconds().toString().length === 1 ? '0' + dateSelected.getSeconds().toString() : dateSelected.getSeconds();
-    return rightnow = dateSelected.getHours() + ":" + minuteFormat + ":" + secondFormat;
+    var rightnow = dateSelected.getHours().toString() + ":" + minuteFormat + ":" + secondFormat;
+    return rightnow.toString();
 }
 
 //pomodoro checkbox eventlistener
 pmdr_check.addEventListener('click', function() {
-    const input_create = document.createElement("input");
-    const label_25_create = document.createElement("label");
     if (pmdr_check.checked === true) {
         //log for diagnostics the time selected
         console.log("Pomodoro Selected at", rightNowDiag());
@@ -52,6 +51,33 @@ break_check.addEventListener('click', function() {
     }
 });
 
+//end time calculator function
+function endTime() {
+    var hours = rightNowDiag().substring(0,2);
+    var minutes = rightNowDiag().substring(3,5);
+    var numMin = Number(minutes);
+    var mins;
+    //<--TODO `IF` SECTION-->
+        if (numMin + 25 > 60) {
+            let temp = numMin + 25; 
+            let temp2 = temp - 60;
+            hours = Number(hours) + 1;
+            minutes = temp2;
+            mins = minutes.length === 1 ? '0' + minutes : minutes;
+            return hours + ":" + mins;
+        } else if (numMin + 25 == 60){
+            hours = Number(hours) + 1;
+            minutes = "0";
+            mins = minutes.length === 1 ? '0' + minutes : minutes;
+            return hours + ":" + mins;
+        } else {
+            minutes = numMin + 25;
+            mins = minutes.length === 1 ? '0' + minutes : minutes;
+            return hours + ":" + mins;
+        }
+    
+}
+
 //log session after completing selection of checkboxes
 function logMySession() {
     var table = document.getElementById("pmdr");
@@ -59,10 +85,9 @@ function logMySession() {
     var start_time = row.insertCell(0);
     var pmdr_type = row.insertCell(1);
     var end_time = row.insertCell(2);
-    pmdr_check.checked === true ? console.log("Pomodoro Selected") : 
-        break_check.checked === true ? console.log("Break Selected") :
+    pmdr_check.checked === true ? pmdr_type.innerHTML = "Pomodoro Session" : 
+        break_check.checked === true ? pmdr_type.innerHTML = "Break Session" :
             alert("Please check Pomodoro or Break!");
     start_time.innerHTML = rightNowDiag();
-    pmdr_type.innerHTML = pmdr_check.checked === true ? "Pomodoro Session" : "Break Time";
-    end_time.innerHTML = "end";
+    end_time.innerHTML = endTime();
 }
