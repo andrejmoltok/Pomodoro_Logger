@@ -63,17 +63,17 @@ function endTime() {
             let temp = numMin + 25; 
             let temp2 = temp - 60;
             hours = Number(hours) + 1;
-            minutes = temp2;
-            mins = minutes.length === 1 ? '0' + minutes : minutes;
+            minutes = temp2.toString();
+            mins = minutes.length === 1 ? '0' + minutes.toString() : minutes;
             return hours + ":" + mins + ":" + seconds;
         } else if (numMin + 25 == 60){
             hours = Number(hours) + 1;
             minutes = "0";
-            mins = minutes.length === 1 ? '0' + minutes : minutes;
+            mins = minutes.length === 1 ? '0' + minutes.toString() : minutes;
             return hours + ":" + mins + ":" + seconds;
         } else {
             minutes = numMin + 25;
-            mins = minutes.length === 1 ? '0' + minutes : minutes;
+            mins = minutes.length === 1 ? '0' + minutes.toString() : minutes;
             return hours + ":" + mins + ":" + seconds;
         }
     
@@ -86,12 +86,19 @@ function logMySession() {
     var start_time = row.insertCell(0);
     var pmdr_type = row.insertCell(1);
     var end_time = row.insertCell(2);
-    console.log("Start time:",rightNowDiag(),"Session:",pmdr_check.checked === true ? pmdr_type.innerHTML = "Pomodoro Session" : 
-    break_check.checked === true ? pmdr_type.innerHTML = "Break Session" :
-        "empty","End time:",endTime());
-    pmdr_check.checked === true ? pmdr_type.innerHTML = "Pomodoro Session" : 
-        break_check.checked === true ? pmdr_type.innerHTML = "Break Session" :
-            alert("Please check Pomodoro or Break!");
-    start_time.innerHTML = rightNowDiag();
-    end_time.innerHTML = endTime();
+    console.log("Start time:",rightNowDiag(),
+                "Session:",pmdr_check.checked === true ? pmdr_type.innerHTML = "Pomodoro" : 
+                                break_check.checked === true ? pmdr_type.innerHTML = "Break Time" :
+                                                                        "Not selected","End time:",endTime());
+    if (pmdr_check.checked === true) {
+        pmdr_type.innerHTML = "Pomodoro Session";
+        start_time.innerHTML = rightNowDiag();
+        end_time.innerHTML = endTime();
+    } else if (break_check.checked === true) {
+        pmdr_type.innerHTML = "Break Session";
+        start_time.innerHTML = rightNowDiag();
+        end_time.innerHTML = endTime();
+    } else {
+        return;
+    }
 }
