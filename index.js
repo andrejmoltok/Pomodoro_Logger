@@ -7,7 +7,7 @@ const pmdr_label = document.getElementById("pmdr_label");
 const break_label = document.getElementById("break_label");
 
 //start_time field value
-const start_time = document.getElementsById("start_time");
+// const start_time = document.getElementsById("start_time");
 
 //setInterval to refresh new Date() every 1 second
 const myInterval = setInterval(rightNowDiag, 1000);
@@ -55,6 +55,7 @@ break_check.addEventListener('click', function() {
 function endTime() {
     var hours = rightNowDiag().substring(0,2);
     var minutes = rightNowDiag().substring(3,5);
+    var seconds = rightNowDiag().substring(6,8);
     var numMin = Number(minutes);
     var mins;
     //<--TODO `IF` SECTION-->
@@ -64,16 +65,16 @@ function endTime() {
             hours = Number(hours) + 1;
             minutes = temp2;
             mins = minutes.length === 1 ? '0' + minutes : minutes;
-            return hours + ":" + mins;
+            return hours + ":" + mins + ":" + seconds;
         } else if (numMin + 25 == 60){
             hours = Number(hours) + 1;
             minutes = "0";
             mins = minutes.length === 1 ? '0' + minutes : minutes;
-            return hours + ":" + mins;
+            return hours + ":" + mins + ":" + seconds;
         } else {
             minutes = numMin + 25;
             mins = minutes.length === 1 ? '0' + minutes : minutes;
-            return hours + ":" + mins;
+            return hours + ":" + mins + ":" + seconds;
         }
     
 }
