@@ -35,6 +35,7 @@ input[type=checkbox]{
 table{
     margin: auto auto;
     width: 100%;
+    height: auto;
     background-color: burlywood;
     text-align: center;
 }
@@ -42,5 +43,9 @@ table{
 #foot{
     margin: auto auto;
     padding: 0 0;
+    position: fixed;
+    bottom: 0;
+    right: 666px;
     min-width: 350px;
+    background-color: burlywood;
 }

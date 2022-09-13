@@ -15,16 +15,8 @@ const myInterval = setInterval(rightNowDiag, 1000);
 //diagnostic function to log time into console after checkbox selection
 function rightNowDiag() {
     var dateSelected = new Date();
-    return rightnow = dateSelected.getHours() + ":" + dateSelected.getMinutes() + ":" + dateSelected.getSeconds();
-}
-
-//log session after completing selection of checkboxes
-function logMySession() {
-    var table = document.getElementById("pmdr");
-    var row = table.insertRow(1);
-    pmdr_check.checked === true ? console.log("Pomodoro Selected") : 
-        break_check.checked === true ? console.log("Break Selected") :
-            alert("Please check Pomodoro or Break!")
+    var minuteFormat = dateSelected.getMinutes().toString().length === 1 ? '0' + dateSelected.getMinutes().toString() : dateSelected.getMinutes();
+    return rightnow = dateSelected.getHours() + ":" + minuteFormat + ":" + dateSelected.getSeconds();
 }
 
 //pomodoro checkbox eventlistener
@@ -59,3 +51,17 @@ break_check.addEventListener('click', function() {
     }
 });
 
+//log session after completing selection of checkboxes
+function logMySession() {
+    var table = document.getElementById("pmdr");
+    var row = table.insertRow(1);
+    var start_time = row.insertCell(0);
+    var pmdr_type = row.insertCell(1);
+    var end_time = row.insertCell(2);
+    pmdr_check.checked === true ? console.log("Pomodoro Selected") : 
+        break_check.checked === true ? console.log("Break Selected") :
+            alert("Please check Pomodoro or Break!");
+    start_time.innerHTML = rightNowDiag();
+    pmdr_type.innerHTML = pmdr_check.checked === true ? "Pomodoro Session" : "Break Time";
+    end_time.innerHTML = "end";
+}
