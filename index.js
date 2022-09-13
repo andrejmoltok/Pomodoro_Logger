@@ -16,7 +16,8 @@ const myInterval = setInterval(rightNowDiag, 1000);
 function rightNowDiag() {
     var dateSelected = new Date();
     var minuteFormat = dateSelected.getMinutes().toString().length === 1 ? '0' + dateSelected.getMinutes().toString() : dateSelected.getMinutes();
-    return rightnow = dateSelected.getHours() + ":" + minuteFormat + ":" + dateSelected.getSeconds();
+    var secondFormat = dateSelected.getSeconds().toString().length === 1 ? '0' + dateSelected.getSeconds().toString() : dateSelected.getSeconds();
+    return rightnow = dateSelected.getHours() + ":" + minuteFormat + ":" + secondFormat;
 }
 
 //pomodoro checkbox eventlistener
@@ -54,7 +55,7 @@ break_check.addEventListener('click', function() {
 //log session after completing selection of checkboxes
 function logMySession() {
     var table = document.getElementById("pmdr");
-    var row = table.insertRow(1);
+    var row = table.insertRow(-1);
     var start_time = row.insertCell(0);
     var pmdr_type = row.insertCell(1);
     var end_time = row.insertCell(2);
