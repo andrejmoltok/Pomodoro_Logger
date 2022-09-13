@@ -86,6 +86,9 @@ function logMySession() {
     var start_time = row.insertCell(0);
     var pmdr_type = row.insertCell(1);
     var end_time = row.insertCell(2);
+    console.log("Start time:",rightNowDiag(),"Session:",pmdr_check.checked === true ? pmdr_type.innerHTML = "Pomodoro Session" : 
+    break_check.checked === true ? pmdr_type.innerHTML = "Break Session" :
+        "empty","End time:",endTime());
     pmdr_check.checked === true ? pmdr_type.innerHTML = "Pomodoro Session" : 
         break_check.checked === true ? pmdr_type.innerHTML = "Break Session" :
             alert("Please check Pomodoro or Break!");
