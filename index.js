@@ -186,72 +186,90 @@ function logMySession() {
         pmdr_type.appendChild(pomodoro);
         end_time.appendChild(et);
         row.style.backgroundColor = "#B10F06"; // contrast verified with webaim
+
         pmdr_check.style.display = "inline-block";
         pmdr_check.checked = false;
         pmdr_check.disabled = false;
         pmdr_label.style.display = "inline-block";
+
         break_check.style.display = "inline-block";
         break_label.style.display = "inline-block";
+
         min25_label.style.display = "none";
         min25_check.style.display = "none";
         min25_check.checked = false;
         min25_check.disabled = false;
+
         min5_label.style.display = "none";
         min5_check.style.display = "none";
         min5_check.checked = false;
         min5_check.disabled = false;
+
         min10_label.style.display = "none";
         min10_check.style.display = "none";
         min10_check.checked = false;
         min10_check.disabled = false;
+
         document.getElementById("myform").style.justifyContent = "space-between";
     } else if (break_check.checked === true && min5_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(breaktime);
         end_time.appendChild(et);
         row.style.backgroundColor = "#007A00"; // contrast verified with webaim
+        
         break_check.style.display = "inline-block";
         break_label.style.display = "inline-block";
         break_check.checked = false;
         break_check.disabled = false;
+
         min25_label.style.display = "none";
         min25_check.style.display = "none";
         min25_check.checked = false;
         min25_check.disabled = false;
+
         min5_label.style.display = "none";
         min5_check.style.display = "none";
         min5_check.checked = false;
         min5_check.disabled = false;
+
         min10_label.style.display = "none";
         min10_check.style.display = "none";
         min10_check.checked = false;
         min10_check.disabled = false;
+
         pmdr_check.style.display = "inline-block";
         pmdr_label.style.display = "inline-block";
+
         document.getElementById("myform").style.justifyContent = "space-between";
     } else if (break_check.checked === true && min10_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(breaktime);
         end_time.appendChild(et);
         row.style.backgroundColor = "#007A00"; // contrast verified with webaim
+
         break_label.style.display = "inline-block";
         break_check.style.display = "inline-block";
         break_check.checked = false;
         break_check.disabled = false;
+
         min25_label.style.display = "none";
         min25_check.style.display = "none";
         min25_check.checked = false;
         min25_check.disabled = false;
+
         min5_label.style.display = "none";
         min5_check.style.display = "none";
         min5_check.checked = false;
         min5_check.disabled = false;
+
         min10_label.style.display = "none";
         min10_check.style.display = "none";
         min10_check.checked = false;
         min10_check.disabled = false;
+
         pmdr_check.style.display = "inline-block";
         pmdr_label.style.display = "inline-block";
+
         document.getElementById("myform").style.justifyContent = "space-between";
     } else {
         // delete row if nothing is selected and button is pressed
