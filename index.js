@@ -59,12 +59,52 @@ break_check.addEventListener('click', function() {
         document.getElementById("myform").style.justifyContent = "flex-end";
         pmdr_check.style.display = "none";
         pmdr_label.style.display = "none";
-        
+        min5_label.style.display = "inline-block";
+        min5_label.style.marginLeft = "100px";
+        min5_check.style.display = "inline-block";
+        min10_label.style.display = "inline-block";
+        min10_label.style.marginLeft = "100px";
+        min10_check.style.display = "inline-block";
     } else {
         // show the label and checkbox for the Pomodoro option
-        pmdr_check.style.display = "initial";
-        pmdr_label.style.display = "initial";
+        pmdr_check.style.display = "inline-block";
+        pmdr_label.style.display = "inline-block";
+        min5_label.style.display = "none";
+        min5_check.style.display = "none";
+        min10_label.style.display = "none";
+        min10_check.style.display = "none";
         document.getElementById("myform").style.justifyContent = "space-between";
+    }
+});
+
+// 5 minutes checkbox EventListener, disabled = true/false
+min5_check.addEventListener('click', function() {
+    if (min5_check.checked === true) {
+        min10_check.disabled = true;
+        break_check.disabled = true;
+    } else {
+        min10_check.disabled = false;
+        break_check.disabled = false;
+    }
+});
+
+// 10 minutes checkbox EventListener, disabled = true/false
+min10_check.addEventListener('click', function() {
+    if (min10_check.checked === true) {
+        min5_check.disabled = true;
+        break_check.disabled = true;
+    } else {
+        min5_check.disabled = false;
+        break_check.disabled = false;
+    }
+});
+
+// 25 minutes checkbox EventListener, disabled = true/false
+min25_check.addEventListener('click', function() {
+    if (min25_check.checked === true) {
+        pmdr_check.disabled = true;
+    } else {
+        pmdr_check.disabled = false;
     }
 });
 
