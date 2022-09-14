@@ -12,8 +12,8 @@ const min25_label = document.getElementById("min25_label");
 const min5_label = document.getElementById("min5_label");
 const min10_label = document.getElementById("min10_label");
 
-// start_time field value
-const start_time = document.getElementById("start_time");
+// // start_time field value
+// // const start_time = document.getElementById("start_time");
 
 // setInterval to refresh new Date() every 1 second
 const myInterval = setInterval(rightNowDiag, 1000);
@@ -23,7 +23,7 @@ function rightNowDiag() {
     var dateSelected = new Date();
     var minuteFormat = dateSelected.getMinutes().toString().length === 1 ? '0' + dateSelected.getMinutes().toString() : dateSelected.getMinutes();
     var secondFormat = dateSelected.getSeconds().toString().length === 1 ? '0' + dateSelected.getSeconds().toString() : dateSelected.getSeconds();
-    var rightnow = dateSelected.getHours().toString() + ":" + minuteFormat + ":" + secondFormat;
+    var rightnow = dateSelected.getDate().toString() + "." + dateSelected.getMonth().toString() + "." + dateSelected.getFullYear().toString() + " - " + dateSelected.getHours().toString() + ":" + minuteFormat.toString() + ":" + secondFormat.toString();
     return rightnow;
 }
 
@@ -80,7 +80,7 @@ break_check.addEventListener('click', function() {
 // 5 minutes checkbox EventListener, disabled = true/false
 min5_check.addEventListener('click', function() {
     if (min5_check.checked === true) {
-        console.log("5 minute Break Time Selected");
+        console.log("Break Time Selected 5 minutes");
         min10_check.disabled = true;
         break_check.disabled = true;
     } else {
@@ -92,7 +92,7 @@ min5_check.addEventListener('click', function() {
 // 10 minutes checkbox EventListener, disabled = true/false
 min10_check.addEventListener('click', function() {
     if (min10_check.checked === true) {
-        console.log("10 minute Break Time Selected");
+        console.log("Break Time Selected 10 minutes");
         min5_check.disabled = true;
         break_check.disabled = true;
     } else {
@@ -104,7 +104,7 @@ min10_check.addEventListener('click', function() {
 // 25 minutes checkbox EventListener, disabled = true/false
 min25_check.addEventListener('click', function() {
     if (min25_check.checked === true) {
-        console.log("25 minute Pomodoro Selected");
+        console.log("Pomodoro Selected 25 minutes ");
         pmdr_check.disabled = true;
     } else {
         pmdr_check.disabled = false;
@@ -115,9 +115,9 @@ min25_check.addEventListener('click', function() {
 function endTime() {
 
     // convert rightnow time to strings
-    var hours = rightNowDiag().substring(0,2);
-    var minutes = rightNowDiag().substring(3,5);
-    var seconds = rightNowDiag().substring(6,8);
+    var hours = rightNowDiag().substring(12,14);
+    var minutes = rightNowDiag().substring(15,17);
+    var seconds = rightNowDiag().substring(18,20);
 
     // convert string to number for operation
     var numMin = Number(minutes);
@@ -128,9 +128,9 @@ function endTime() {
     // check whether time is 1 or 2 digits, then 
     // convert accordingly
     if (hours.includes(':')) {
-        hours = rightNowDiag().substring(0,1);
-        minutes = rightNowDiag().substring(2,4);
-        seconds = rightNowDiag().substring(5,7);
+        hours = rightNowDiag().substring(12,13);
+        minutes = rightNowDiag().substring(14,16);
+        seconds = rightNowDiag().substring(17,19);
     }
     //TODO `IF` SECTION - choose between pomodoro or break session time options
     
