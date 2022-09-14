@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="index.css">
     </head>
-    <body>
+    <body onload="loader()">
         <div class="wrapper">
             <h1><img src="tomato.png">  Pomodoro Logger  <img src="tomato.png"></h1>
 
@@ -19,15 +19,13 @@
                     </label>
                 </div> -->
                 <div id="myform">
-                    <div>
                         <label for="pmdr_check" id="pmdr_label">Pomodoro:
                             <input type="checkbox" id="pmdr_check">
                         </label>
                         <label for="min25_check" id="min25_label">25min
                             <input type="checkbox" id="min25_check">
                         </label>
-                    </div>
-                    <div>
+                    
                         <label for="break_check" id="break_label">Break:
                             <input type="checkbox" id="break_check">
                         </label>
@@ -37,7 +35,6 @@
                         <label for="min10_check" id="min10_label">10min
                             <input type="checkbox" id="min10_check">
                         </label>
-                    </div>
                 </div>
                 <div>
                     <button onclick="logMySession()">Log my session</button>
@@ -61,5 +58,15 @@
 
         </div>
         <script src="index.js"></script>
+        <script>
+            function loader() {
+                min25_label.style.display = "none";
+                min25_check.style.display = "none";
+                min5_label.style.display = "none";
+                min5_check.style.display = "none";
+                min10_label.style.display = "none";
+                min10_check.style.display = "none";
+            }
+        </script>
     </body>
 </html>

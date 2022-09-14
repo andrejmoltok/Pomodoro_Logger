@@ -8,7 +8,7 @@ const min10_check = document.getElementById("min10_check");
 // checkbox label variables
 const pmdr_label = document.getElementById("pmdr_label");
 const break_label = document.getElementById("break_label");
-const min25_label = document.getElementsById("min25_label");
+const min25_label = document.getElementById("min25_label");
 const min5_label = document.getElementById("min5_label");
 const min10_label = document.getElementById("min10_label");
 
@@ -30,30 +30,41 @@ function rightNowDiag() {
 // pomodoro checkbox eventlistener
 pmdr_check.addEventListener('click', function() {
     if (pmdr_check.checked === true) {
-        //log for diagnostics the time selected
+        // log for diagnostics the time selected
         console.log("Pomodoro Selected at", rightNowDiag());
-        //hide the label and checkbox for the Break option
+        // hide the label and checkbox for the Break option
+        // adjusting the other checkboxes and labels
+        document.getElementById("myform").style.justifyContent = "flex-start";
         break_check.style.display = "none";
         break_label.style.display = "none";
+        min25_label.style.display = "inline-block";
+        min25_label.style.marginLeft = "100px";
+        min25_check.style.display = "inline-block";
     } else {
-        //show the label and checkbox for the Break option
-        break_check.style.display = "initial";
-        break_label.style.display = "initial";
+        // show the label and checkbox for the Break option
+        break_check.style.display = "inline-block";
+        break_label.style.display = "inline-block";
+        min25_label.style.display = "none";
+        min25_check.style.display = "none";
+        document.getElementById("myform").style.justifyContent = "space-between";
     }
 });
 
 // break checkbox eventlistener
 break_check.addEventListener('click', function() {
     if (break_check.checked === true) {
-        //log for diagnostics the time selected
+        // log for diagnostics the time selected
         console.log("Break Selected at", rightNowDiag());
-        //hide the label and checkbox for the Pomodoro option
+        // hide the label and checkbox for the Pomodoro option
+        document.getElementById("myform").style.justifyContent = "flex-end";
         pmdr_check.style.display = "none";
         pmdr_label.style.display = "none";
+        
     } else {
-        //show the label and checkbox for the Pomodoro option
+        // show the label and checkbox for the Pomodoro option
         pmdr_check.style.display = "initial";
         pmdr_label.style.display = "initial";
+        document.getElementById("myform").style.justifyContent = "space-between";
     }
 });
 
@@ -124,17 +135,22 @@ function logMySession() {
                                                 "Not selected","End time:",endTime());
 
     // pomodoro or break time verification logic
-    // appendChild() variables and give different background color
-    if (pmdr_check.checked === true) {
+    // do appendChild() variables and give different background color
+    if (pmdr_check.checked === true && min25_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(pomodoro);
         end_time.appendChild(et);
-        row.style.backgroundColor = "#B10F06";
-    } else if (break_check.checked === true) {
+        row.style.backgroundColor = "#B10F06"; // contrast verified with webaim
+    } else if (break_check.checked === true && min5_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(breaktime);
         end_time.appendChild(et);
-        row.style.backgroundColor = "#007A00";
+        row.style.backgroundColor = "#007A00"; // contrast verified with webaim
+    } else if (break_check.checked === true && min10_check.checked === true) {
+        start_time.appendChild(st);
+        pmdr_type.appendChild(breaktime);
+        end_time.appendChild(et);
+        row.style.backgroundColor = "#007A00"; // contrast verified with webaim
     } else {
         // if nothing is selected, <--do nothing-->
         return;
