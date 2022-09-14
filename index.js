@@ -84,8 +84,6 @@ function endTime() {
     
 }
 
-console.log(endTime());
-
 // log session after completing selection of checkboxes
 function logMySession() {
     var table = document.getElementById("pmdr");
