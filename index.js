@@ -80,6 +80,7 @@ break_check.addEventListener('click', function() {
 // 5 minutes checkbox EventListener, disabled = true/false
 min5_check.addEventListener('click', function() {
     if (min5_check.checked === true) {
+        console.log("5 minute Break Time Selected");
         min10_check.disabled = true;
         break_check.disabled = true;
     } else {
@@ -91,6 +92,7 @@ min5_check.addEventListener('click', function() {
 // 10 minutes checkbox EventListener, disabled = true/false
 min10_check.addEventListener('click', function() {
     if (min10_check.checked === true) {
+        console.log("10 minute Break Time Selected");
         min5_check.disabled = true;
         break_check.disabled = true;
     } else {
@@ -102,6 +104,7 @@ min10_check.addEventListener('click', function() {
 // 25 minutes checkbox EventListener, disabled = true/false
 min25_check.addEventListener('click', function() {
     if (min25_check.checked === true) {
+        console.log("25 minute Pomodoro Selected");
         pmdr_check.disabled = true;
     } else {
         pmdr_check.disabled = false;
@@ -170,8 +173,9 @@ function logMySession() {
 
     // console.log for diagnostic purposes
     console.log("Start time:",rightNowDiag(),
-                "Session:",pmdr_check.checked === true ? "Pomodoro" : 
-                                break_check.checked === true ? "Break Time" :
+                "Session:",pmdr_check.checked === true ? "Pomodoro (25min)" : 
+                                min5_check.checked === true ? "Break Time (5min)" :
+                                    min10_check.checked === true ? "BreakTime (10min)" :
                                                 "Not selected","End time:",endTime());
 
     // pomodoro or break time verification logic
@@ -181,18 +185,75 @@ function logMySession() {
         pmdr_type.appendChild(pomodoro);
         end_time.appendChild(et);
         row.style.backgroundColor = "#B10F06"; // contrast verified with webaim
+        pmdr_check.style.display = "inline-block";
+        pmdr_check.checked = false;
+        pmdr_check.disabled = false;
+        pmdr_label.style.display = "inline-block";
+        break_check.style.display = "inline-block";
+        break_label.style.display = "inline-block";
+        min25_label.style.display = "none";
+        min25_check.style.display = "none";
+        min25_check.checked = false;
+        min25_check.disabled = false;
+        min5_label.style.display = "none";
+        min5_check.style.display = "none";
+        min5_check.checked = false;
+        min5_check.disabled = false;
+        min10_label.style.display = "none";
+        min10_check.style.display = "none";
+        min10_check.checked = false;
+        min10_check.disabled = false;
+        document.getElementById("myform").style.justifyContent = "space-between";
     } else if (break_check.checked === true && min5_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(breaktime);
         end_time.appendChild(et);
         row.style.backgroundColor = "#007A00"; // contrast verified with webaim
+        break_check.style.display = "inline-block";
+        break_label.style.display = "inline-block";
+        break_check.checked = false;
+        break_check.disabled = false;
+        min25_label.style.display = "none";
+        min25_check.style.display = "none";
+        min25_check.checked = false;
+        min25_check.disabled = false;
+        min5_label.style.display = "none";
+        min5_check.style.display = "none";
+        min5_check.checked = false;
+        min5_check.disabled = false;
+        min10_label.style.display = "none";
+        min10_check.style.display = "none";
+        min10_check.checked = false;
+        min10_check.disabled = false;
+        pmdr_check.style.display = "inline-block";
+        pmdr_label.style.display = "inline-block";
+        document.getElementById("myform").style.justifyContent = "space-between";
     } else if (break_check.checked === true && min10_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(breaktime);
         end_time.appendChild(et);
         row.style.backgroundColor = "#007A00"; // contrast verified with webaim
+        break_label.style.display = "inline-block";
+        break_check.style.display = "inline-block";
+        break_check.checked = false;
+        break_check.disabled = false;
+        min25_label.style.display = "none";
+        min25_check.style.display = "none";
+        min25_check.checked = false;
+        min25_check.disabled = false;
+        min5_label.style.display = "none";
+        min5_check.style.display = "none";
+        min5_check.checked = false;
+        min5_check.disabled = false;
+        min10_label.style.display = "none";
+        min10_check.style.display = "none";
+        min10_check.checked = false;
+        min10_check.disabled = false;
+        pmdr_check.style.display = "inline-block";
+        pmdr_label.style.display = "inline-block";
+        document.getElementById("myform").style.justifyContent = "space-between";
     } else {
-        // if nothing is selected, <--do nothing-->
-        return;
+        // delete row if nothing is selected and button is pressed
+        row = table.deleteRow(-1); 
     }
 }
