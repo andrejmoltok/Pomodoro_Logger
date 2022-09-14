@@ -87,27 +87,31 @@ function endTime() {
 function logMySession() {
     var table = document.getElementById("pmdr");
     var row = table.insertRow(-1);
+
     var start_time = row.insertCell(0);
-    var st = document.createTextNode(rightNowDiag());
     var pmdr_type = row.insertCell(1);
+    var end_time = row.insertCell(2);
+
+    var st = document.createTextNode(rightNowDiag());
     var pomodoro = document.createTextNode("Pomodoro");
     var breaktime = document.createTextNode("Break Time");
-    var end_time = row.insertCell(2);
     var et = document.createTextNode(endTime());
-    var tr_color_pmdr = document.getElementById("pomodoro");
-    var tr_color_break = document.getElementById("break");
+
     console.log("Start time:",rightNowDiag(),
                 "Session:",pmdr_check.checked === true ? "Pomodoro" : 
                                 break_check.checked === true ? "Break Time" :
                                                                         "Not selected","End time:",endTime());
+
     if (pmdr_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(pomodoro);
         end_time.appendChild(et);
+        row.style.backgroundColor = "#B10F06";
     } else if (break_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(breaktime);
         end_time.appendChild(et);
+        row.style.backgroundColor = "#007A00";
     } else {
         return;
     }

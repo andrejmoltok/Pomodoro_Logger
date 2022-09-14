@@ -41,6 +41,7 @@ input[type=checkbox]{
     margin: auto auto;
     width: 960px;
     text-align: center;
+    color: white;
 }
 
 .pmdr{
@@ -52,6 +53,7 @@ input[type=checkbox]{
 
 #newRow{
     background-color: burlywood;
+    color: black;
 }
 
 #foot{
