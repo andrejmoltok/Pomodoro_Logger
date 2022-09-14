@@ -23,7 +23,8 @@ function rightNowDiag() {
     var dateSelected = new Date();
     var minuteFormat = dateSelected.getMinutes().toString().length === 1 ? '0' + dateSelected.getMinutes().toString() : dateSelected.getMinutes();
     var secondFormat = dateSelected.getSeconds().toString().length === 1 ? '0' + dateSelected.getSeconds().toString() : dateSelected.getSeconds();
-    var rightnow = dateSelected.getDate().toString() + "." + dateSelected.getMonth().toString() + "." + dateSelected.getFullYear().toString() + " - " + dateSelected.getHours().toString() + ":" + minuteFormat.toString() + ":" + secondFormat.toString();
+    var monthFormat = dateSelected.getMonth().toString().length === 1 ? '0' + dateSelected.getMonth().toString() : dateSelected.getMonth();
+    var rightnow = dateSelected.getDate().toString() + '.' + monthFormat.toString() + "." + dateSelected.getFullYear().toString() + " - " + dateSelected.getHours().toString() + ":" + minuteFormat.toString() + ":" + secondFormat.toString();
     return rightnow;
 }
 
