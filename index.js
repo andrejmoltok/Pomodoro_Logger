@@ -1,10 +1,16 @@
 // checkbox variables
 const pmdr_check = document.getElementById("pmdr_check");
 const break_check = document.getElementById("break_check");
+const min25_check = document.getElementById("min25_check");
+const min5_check = document.getElementById("min5_check");
+const min10_check = document.getElementById("min10_check");
 
 // checkbox label variables
 const pmdr_label = document.getElementById("pmdr_label");
 const break_label = document.getElementById("break_label");
+const min25_label = document.getElementsById("min25_label");
+const min5_label = document.getElementById("min5_label");
+const min10_label = document.getElementById("min10_label");
 
 // start_time field value
 const start_time = document.getElementById("start_time");
@@ -12,7 +18,7 @@ const start_time = document.getElementById("start_time");
 // setInterval to refresh new Date() every 1 second
 const myInterval = setInterval(rightNowDiag, 1000);
 
-// diagnostic function to log time into console after checkbox selection
+// diagnostic function to log and append time into console and table after checkbox selection
 function rightNowDiag() {
     var dateSelected = new Date();
     var minuteFormat = dateSelected.getMinutes().toString().length === 1 ? '0' + dateSelected.getMinutes().toString() : dateSelected.getMinutes();
@@ -54,13 +60,19 @@ break_check.addEventListener('click', function() {
 // end time calculator function
 function endTime() {
 
+    // convert rightnow time to strings
     var hours = rightNowDiag().substring(0,2);
     var minutes = rightNowDiag().substring(3,5);
     var seconds = rightNowDiag().substring(6,8);
 
+    // convert string to number for operation
     var numMin = Number(minutes);
+
+    // add empty string to fill with data(minutes)
     var mins = "";
 
+    // check whether time is 1 or 2 digits, then 
+    // convert accordingly
     if (hours.includes(':')) {
         hours = rightNowDiag().substring(0,1);
         minutes = rightNowDiag().substring(2,4);
@@ -90,23 +102,29 @@ function endTime() {
 // log session after completing selection of checkboxes
 function logMySession() {
 
+    // create variable for table and row insertion
     var table = document.getElementById("pmdr");
     var row = table.insertRow(-1);
 
+    // create variables to insert data into table row cells
     var start_time = row.insertCell(0);
     var pmdr_type = row.insertCell(1);
     var end_time = row.insertCell(2);
 
+    // create textnodes for start time, session type and end time
     var st = document.createTextNode(rightNowDiag());
     var pomodoro = document.createTextNode("Pomodoro");
     var breaktime = document.createTextNode("Break Time");
     var et = document.createTextNode(endTime());
 
+    // console.log for diagnostic purposes
     console.log("Start time:",rightNowDiag(),
                 "Session:",pmdr_check.checked === true ? "Pomodoro" : 
                                 break_check.checked === true ? "Break Time" :
-                                                                        "Not selected","End time:",endTime());
+                                                "Not selected","End time:",endTime());
 
+    // pomodoro or break time verification logic
+    // appendChild() variables and give different background color
     if (pmdr_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(pomodoro);
@@ -118,6 +136,7 @@ function logMySession() {
         end_time.appendChild(et);
         row.style.backgroundColor = "#007A00";
     } else {
+        // if nothing is selected, <--do nothing-->
         return;
     }
 }
