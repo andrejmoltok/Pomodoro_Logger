@@ -54,8 +54,8 @@ break_check.addEventListener('click', function() {
 // end time calculator function
 function endTime() {
     var hours = rightNowDiag().substring(0,2);
-    var minutes = rightNowDiag().substring(2,4);
-    var seconds = rightNowDiag().substring(5,7);
+    var minutes = rightNowDiag().substring(3,5);
+    var seconds = rightNowDiag().substring(6,8);
     var numMin = Number(minutes);
     var mins = "";
     if (hours.includes(':')) {
@@ -80,30 +80,34 @@ function endTime() {
             minutes = numMin + 25;
             mins += minutes.length === 1 ? '0' + minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
-        }
-    
+        }   
 }
 
 // log session after completing selection of checkboxes
 function logMySession() {
     var table = document.getElementById("pmdr");
-    var tr_color = document.getElementsByTagName("tr");
     var row = table.insertRow(-1);
     var start_time = row.insertCell(0);
+    var st = document.createTextNode(rightNowDiag());
     var pmdr_type = row.insertCell(1);
+    var pomodoro = document.createTextNode("Pomodoro");
+    var breaktime = document.createTextNode("Break Time");
     var end_time = row.insertCell(2);
+    var et = document.createTextNode(endTime());
+    var tr_color_pmdr = document.getElementById("pomodoro");
+    var tr_color_break = document.getElementById("break");
     console.log("Start time:",rightNowDiag(),
-                "Session:",pmdr_check.checked === true ? pmdr_type.innerHTML = "Pomodoro" : 
-                                break_check.checked === true ? pmdr_type.innerHTML = "Break Time" :
+                "Session:",pmdr_check.checked === true ? "Pomodoro" : 
+                                break_check.checked === true ? "Break Time" :
                                                                         "Not selected","End time:",endTime());
     if (pmdr_check.checked === true) {
-        pmdr_type.innerHTML = "Pomodoro Session";
-        start_time.innerHTML = rightNowDiag();
-        end_time.innerHTML = endTime();
+        start_time.appendChild(st);
+        pmdr_type.appendChild(pomodoro);
+        end_time.appendChild(et);
     } else if (break_check.checked === true) {
-        pmdr_type.innerHTML = "Break Session";
-        start_time.innerHTML = rightNowDiag();
-        end_time.innerHTML = endTime();
+        start_time.appendChild(st);
+        pmdr_type.appendChild(breaktime);
+        end_time.appendChild(et);
     } else {
         return;
     }
