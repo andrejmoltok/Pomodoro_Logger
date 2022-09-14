@@ -7,7 +7,7 @@ const pmdr_label = document.getElementById("pmdr_label");
 const break_label = document.getElementById("break_label");
 
 // start_time field value
-const start_time = document.getElementsById("start_time");
+const start_time = document.getElementById("start_time");
 
 // setInterval to refresh new Date() every 1 second
 const myInterval = setInterval(rightNowDiag, 1000);
