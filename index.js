@@ -53,17 +53,21 @@ break_check.addEventListener('click', function() {
 
 // end time calculator function
 function endTime() {
+
     var hours = rightNowDiag().substring(0,2);
     var minutes = rightNowDiag().substring(3,5);
     var seconds = rightNowDiag().substring(6,8);
+
     var numMin = Number(minutes);
     var mins = "";
+
     if (hours.includes(':')) {
         hours = rightNowDiag().substring(0,1);
         minutes = rightNowDiag().substring(2,4);
         seconds = rightNowDiag().substring(5,7);
     }
     //TODO `IF` SECTION - choose between pomodoro or break session time options
+    
         if (numMin + 25 > 60) {
             let temp = numMin + 25; 
             let temp2 = temp - 60;
@@ -85,6 +89,7 @@ function endTime() {
 
 // log session after completing selection of checkboxes
 function logMySession() {
+
     var table = document.getElementById("pmdr");
     var row = table.insertRow(-1);
 
