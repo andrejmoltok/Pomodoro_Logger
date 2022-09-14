@@ -1,7 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
 .wrapper{
     margin: auto auto;
     width: 960px;
-    height: 200px;
+    height: 680px;
     display: flex;
     flex-flow: column;
 }
@@ -19,10 +23,11 @@ h1{
 }
 
 #flexy{
-    margin: auto auto;
+    margin: 20px 20px;
     padding: 10px 0px;
     display: flex;
     flex-flow: row;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -34,10 +39,19 @@ input[type=checkbox]{
 
 #pmdr{
     margin: auto auto;
-    width: 100%;
-    height: auto;
-    background-color: burlywood;
+    width: 960px;
     text-align: center;
+}
+
+.pmdr{
+    height: 460px;
+    position: relative;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#newRow{
+    background-color: burlywood;
 }
 
 #foot{

@@ -87,6 +87,7 @@ function endTime() {
 // log session after completing selection of checkboxes
 function logMySession() {
     var table = document.getElementById("pmdr");
+    var tr_color = document.getElementsByTagName("tr");
     var row = table.insertRow(-1);
     var start_time = row.insertCell(0);
     var pmdr_type = row.insertCell(1);
