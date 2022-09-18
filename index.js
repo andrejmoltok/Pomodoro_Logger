@@ -140,9 +140,7 @@ function endTime(session) {
         // console.log(hours);
         // console.log(minutes);
         // console.log(seconds);
-
-    //TODO `IF` SECTION - choose between pomodoro or break session time options
-    
+ 
     if (session == 25) {
         if (numMin + 25 > 60) {
             let temp = numMin + 25; 
@@ -216,9 +214,6 @@ function logMySession() {
 
     // create textnodes for start time, session type and end time
     var st = document.createTextNode(rightNowDiag());
-    //var pomodoro = document.createTextNode("Pomodoro");
-    //var breaktime = document.createTextNode("Break Time");
-    //var et = document.createTextNode(endTime());
 
     // console.log for diagnostic purposes
     console.log("Start time: ",rightNowDiag(),
