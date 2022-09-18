@@ -12,9 +12,6 @@ const min25_label = document.getElementById("min25_label");
 const min5_label = document.getElementById("min5_label");
 const min10_label = document.getElementById("min10_label");
 
-// global variable to set session time
-var session = 0;
-
 // setInterval to refresh new Date() every 1 second
 const myInterval = setInterval(rightNowDiag, 1000);
 
@@ -121,9 +118,9 @@ function endTime(session) {
     var hours = rightNowDiag().substring(13,15);
     var minutes = rightNowDiag().substring(16,18);
     var seconds = rightNowDiag().substring(19,21);
-
     // convert string to number for operation
     var numMin = Number(minutes);
+    // console.log(numMin);
 
     // add empty string to fill with data(minutes)
     var mins = "";
@@ -132,14 +129,14 @@ function endTime(session) {
     // converts accordingly
     if (hours.includes(':')) {
         hours = rightNowDiag().substring(12,14);
-        minutes = rightNowDiag().substring(15,17);
-        seconds = rightNowDiag().substring(18,20);
+    } else if (minutes.includes(':')) {
+        minutes = rightNowDiag().substring(16,17);
+    } else if (seconds.includes(':')) {
+        seconds = rightNowDiag().substring(19,20);
     }
-
-        // console.log(rightNowDiag());
-        // console.log(hours);
-        // console.log(minutes);
-        // console.log(seconds);
+    
+    //console.log(rightNowDiag());
+    //console.log(hours+":"+minutes+":"+seconds);
  
     if (session == 25) {
         if (numMin + 25 > 60) {
@@ -147,34 +144,40 @@ function endTime(session) {
             let temp2 = temp - 60;
             hours = Number(hours) + 1;
             minutes = temp2.toString();
-            mins = minutes.length === 1 ? '0' + minutes.toString() : minutes.toString();
+            mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else if (numMin + 25 == 60){
             hours = Number(hours) + 1;
-            minutes = "00";
-            mins = minutes.length === 1 ? minutes.toString() : minutes.toString();
+            minutes = "0";
+            mins = minutes.toString().length === 1 ? '0' +minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else {
             minutes = numMin + 25;
-            mins = minutes.length === 1 ? '0' + minutes.toString() : minutes.toString();
+            mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         }
     } else if (session == 5) {
         if (numMin + 5 > 60) {
             let temp = numMin + 5; 
             let temp2 = temp - 60;
+            // console.log(temp);
+            // console.log(temp2);
             hours = Number(hours) + 1;
             minutes = temp2.toString();
-            mins = minutes.length === 1 ? '0' + minutes.toString() : minutes.toString();
+            mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else if (numMin + 5 == 60){
             hours = Number(hours) + 1;
-            minutes = "00";
-            mins = minutes.length === 1 ? minutes.toString() : minutes.toString();
+            minutes = "0";
+            // console.log(minutes);
+            mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else {
+            // console.log(minutes);
             minutes = numMin + 5;
-            mins = minutes.length === 1 ? '0' + minutes.toString() : minutes.toString();
+            // console.log(typeof minutes);
+            // console.log(minutes);
+            mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         }
     } else if (session == 10) {
@@ -183,22 +186,24 @@ function endTime(session) {
             let temp2 = temp - 60;
             hours = Number(hours) + 1;
             minutes = temp2.toString();
-            mins = minutes.length === 1 ? '0' + minutes.toString() : minutes.toString();
+            mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else if (numMin + 10 == 60){
             hours = Number(hours) + 1;
-            minutes = "00";
-            mins = minutes.length === 1 ? minutes.toString() : minutes.toString();
+            minutes = "0";
+            mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else {
             minutes = numMin + 10;
-            mins = minutes.length === 1 ? '0' + minutes.toString() : minutes.toString();
+            mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         }
     }
 }
 
-//console.log(endTime());
+//console.log(endTime(25));
+//console.log(endTime(5));
+//console.log(endTime(10));
 
 // log session after completing selection of checkboxes
 function logMySession() {
@@ -254,6 +259,7 @@ function logMySession() {
         min10_check.disabled = false;
 
         document.getElementById("myform").style.justifyContent = "space-between";
+        document.getElementById("log").disabled = true;
     } else if (break_check.checked === true && min5_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(document.createTextNode("Break Time - 5 minutes"));
@@ -284,6 +290,7 @@ function logMySession() {
         pmdr_label.style.display = "inline-block";
 
         document.getElementById("myform").style.justifyContent = "space-between";
+        document.getElementById("log").disabled = true;
     } else if (break_check.checked === true && min10_check.checked === true) {
         start_time.appendChild(st);
         pmdr_type.appendChild(document.createTextNode("Break Time - 10 minutes"));
@@ -314,8 +321,13 @@ function logMySession() {
         pmdr_label.style.display = "inline-block";
 
         document.getElementById("myform").style.justifyContent = "space-between";
+        document.getElementById("log").disabled = true;
     } else {
         // delete row if nothing is selected and button is pressed(delete empty row)
         row = table.deleteRow(-1); 
     }
+}
+
+function reset() {
+    document.getElementById("log").disabled = false;
 }
