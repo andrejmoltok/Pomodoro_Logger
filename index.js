@@ -118,92 +118,105 @@ function endTime(session) {
     var hours = rightNowDiag().substring(13,15);
     var minutes = rightNowDiag().substring(16,18);
     var seconds = rightNowDiag().substring(19,21);
+
+    // check whether time is 1 digit and 
+    // converts accordingly
+    if (hours.includes(':') || hours.length === 1) {
+        hours = rightNowDiag().substring(13,14);
+    }
+    if (minutes.includes(':') || minutes.length === 1) {
+        minutes = rightNowDiag().substring(15,17);
+    }
+    if (seconds.includes(':') || seconds.length === 1) {
+        seconds = rightNowDiag().substring(18,20);
+    }
+    
+    // console.log(rightNowDiag());
+    // console.log(hours);
+    // console.log(minutes);
+    // console.log(seconds);
+
     // convert string to number for operation
     var numMin = Number(minutes);
-    // console.log(numMin);
+    //console.log(numMin);
 
     // add empty string to fill with data(minutes)
     var mins = "";
     
-    // check whether time is 1 digit and 
-    // converts accordingly
-    if (hours.includes(':')) {
-        hours = rightNowDiag().substring(12,14);
-    } else if (minutes.includes(':')) {
-        minutes = rightNowDiag().substring(16,17);
-    } else if (seconds.includes(':')) {
-        seconds = rightNowDiag().substring(19,20);
-    }
-    
-    //console.log(rightNowDiag());
-    //console.log(hours+":"+minutes+":"+seconds);
- 
+
     if (session == 25) {
         if (numMin + 25 > 60) {
             let temp = numMin + 25; 
             let temp2 = temp - 60;
+
             hours = Number(hours) + 1;
             minutes = temp2.toString();
             mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
+            
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else if (numMin + 25 == 60){
             hours = Number(hours) + 1;
             minutes = "0";
             mins = minutes.toString().length === 1 ? '0' +minutes.toString() : minutes.toString();
+            
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else {
             minutes = numMin + 25;
             mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
+            
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         }
     } else if (session == 5) {
         if (numMin + 5 > 60) {
             let temp = numMin + 5; 
             let temp2 = temp - 60;
-            // console.log(temp);
-            // console.log(temp2);
+
+            
             hours = Number(hours) + 1;
             minutes = temp2.toString();
             mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
+            
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else if (numMin + 5 == 60){
             hours = Number(hours) + 1;
             minutes = "0";
-            // console.log(minutes);
             mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
+            
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else {
-            // console.log(minutes);
             minutes = numMin + 5;
-            // console.log(typeof minutes);
-            // console.log(minutes);
             mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
+            
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         }
     } else if (session == 10) {
         if (numMin + 10 > 60) {
             let temp = numMin + 10; 
             let temp2 = temp - 60;
+
             hours = Number(hours) + 1;
             minutes = temp2.toString();
             mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
+            
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else if (numMin + 10 == 60){
             hours = Number(hours) + 1;
             minutes = "0";
             mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
+            
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         } else {
             minutes = numMin + 10;
             mins = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString();
+            
             return hours.toString() + ":" + mins.toString() + ":" + seconds.toString();
         }
     }
 }
 
 //console.log(endTime(25));
-//console.log(endTime(5));
-//console.log(endTime(10));
+// console.log(endTime(5));
+// console.log(endTime(10));
 
 // log session after completing selection of checkboxes
 function logMySession() {
