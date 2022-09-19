@@ -214,24 +214,25 @@ function endTime(session) {
     }
 }
 
-//console.log(endTime(25));
+// console.log(endTime(25));
 // console.log(endTime(5));
 // console.log(endTime(10));
 
 // log session after completing selection of checkboxes
 function logMySession() {
 
+    
     // create variable for table and row insertion
     var table = document.getElementById("pmdr");
     var row = table.insertRow(-1);
+
+    // create textnodes for start time, session type and end time
+    var st = document.createTextNode(rightNowDiag());
 
     // create variables to insert data into table row cells
     var start_time = row.insertCell(0);
     var pmdr_type = row.insertCell(1);
     var end_time = row.insertCell(2);
-
-    // create textnodes for start time, session type and end time
-    var st = document.createTextNode(rightNowDiag());
 
     // console.log for diagnostic purposes
     console.log("Start time: ",rightNowDiag(),
@@ -247,6 +248,7 @@ function logMySession() {
         pmdr_type.appendChild(document.createTextNode("Pomodoro - 25 minutes"));
         end_time.appendChild(document.createTextNode(endTime(25)));
         row.style.backgroundColor = "#B10F06"; // contrast verified with webaim
+        
 
         pmdr_check.style.display = "inline-block";
         pmdr_check.checked = false;
@@ -343,5 +345,4 @@ function logMySession() {
 
 function reset() {
     document.getElementById("log").disabled = false;
-    
 }
