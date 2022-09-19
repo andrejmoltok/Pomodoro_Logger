@@ -343,6 +343,5 @@ function logMySession() {
 
 function reset() {
     document.getElementById("log").disabled = false;
-    start_time.style.textDecoration = "line-through";
-
+    
 }

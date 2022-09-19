@@ -37,11 +37,19 @@ input[type=checkbox]{
     bottom: 1px;
 }
 
+button{
+    background-color: darkgrey;
+    border: 2px solid grey;
+    width: 80px;
+    height: 40px;
+}
+
 #pmdr{
     margin: auto auto;
     width: 960px;
     text-align: center;
     color: white;
+    border: 2px solid darkgray;
 }
 
 .pmdr{
@@ -54,8 +62,8 @@ input[type=checkbox]{
 #newRow{
     background-color: burlywood;
     color: black;
+    
 }
-
 
 #foot{
     margin: auto auto;
